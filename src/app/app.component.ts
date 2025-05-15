@@ -3,18 +3,30 @@ import { Component, AfterViewInit } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'] // fixed typo: 'styleUrl' ➜ 'styleUrls'
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements AfterViewInit {
   title = 'prashasync-landing';
 
+  // 🔽 Navbar state
+  isMenuOpen = false;
+
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  closeMenu() {
+    this.isMenuOpen = false;
+  }
+
+  // 🔽 Scroll fade-in logic
   ngAfterViewInit() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('in-view');
-            observer.unobserve(entry.target); // Optional: remove once visible
+            observer.unobserve(entry.target);
           }
         });
       },
@@ -23,7 +35,6 @@ export class AppComponent implements AfterViewInit {
       }
     );
 
-    // Observe all <section> tags automatically
     document.querySelectorAll('section').forEach((section) => {
       observer.observe(section);
     });

@@ -1,16 +1,28 @@
 <!-- Navigation -->
 <nav class="navbar">
+  <!-- Mobile Hamburger (left only on small screens) -->
+  <button class="hamburger" (click)="toggleMenu()">
+    {{ isMenuOpen ? '✖' : '☰' }}
+  </button>
+
+  <!-- Centered Logo -->
   <div class="logo">Prasha<span class="sync">Sync</span></div>
-  <ul class="nav-links">
-  <li><a href="#features">Features</a></li>
-  <li><a href="#how-it-works">How it works</a></li>
-  <li><a href="#safety">Safety</a></li>
-  <li><a href="#tech">Tech</a></li>
-</ul>
 
-  <a href="#book-call" class="cta-button">Book a Call</a>
+  <!-- Desktop Nav Links -->
+  <ul class="nav-links" [class.open]="isMenuOpen">
+    <li><a href="#features" (click)="closeMenu()">Features</a></li>
+    <li><a href="#how-it-works" (click)="closeMenu()">How it works</a></li>
+    <li><a href="#safety" (click)="closeMenu()">Safety</a></li>
+    <li><a href="#tech" (click)="closeMenu()">Tech</a></li>
+  </ul>
 
+  <!-- Desktop-only CTA -->
+  <a href="#book-call" class="cta-button desktop-only" (click)="closeMenu()">Book a Call</a>
 </nav>
+
+
+
+
 
 <!-- Hero Section -->
 <section class="hero">
