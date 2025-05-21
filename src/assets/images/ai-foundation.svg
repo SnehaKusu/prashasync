@@ -1,0 +1,12 @@
+<svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#6C63FF" stroke-width="1.5" fill="none" stroke-linejoin="round">
+    <!-- Bottom Layer -->
+    <polygon points="12,44 32,56 52,44 32,32" />
+    
+    <!-- Middle Layer -->
+    <polygon points="12,32 32,44 52,32 32,20" />
+
+    <!-- Top Layer -->
+    <polygon points="12,20 32,32 52,20 32,8" />
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Document Outline -->
+  <g stroke="#6C63FF" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M16 12h20l12 12v28a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4V16a4 4 0 0 1 4-4z" />
+    <path d="M36 12v12h12" />
+
+    <!-- Shield with checkmark overlay -->
+    <path d="M32 38l8 4v4c0 5.5-8 8-8 8s-8-2.5-8-8v-4l8-4z" />
+    <path d="M28 45l3 3l5-5" />
+  </g>
+</svg>

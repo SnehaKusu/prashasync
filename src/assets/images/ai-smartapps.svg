@@ -1,0 +1,19 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#6C63FF" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- Top Left Cube -->
+    <rect x="6" y="6" width="16" height="16" />
+    <polygon points="14,2 22,6 14,10 6,6" />
+
+    <!-- Top Right Cube -->
+    <rect x="42" y="6" width="16" height="16" />
+    <polygon points="50,2 58,6 50,10 42,6" />
+
+    <!-- Bottom Left Cube -->
+    <rect x="6" y="42" width="16" height="16" />
+    <polygon points="14,38 22,42 14,46 6,42" />
+
+    <!-- Bottom Right Cube -->
+    <rect x="42" y="42" width="16" height="16" />
+    <polygon points="50,38 58,42 50,46 42,42" />
+  </g>
+</svg>

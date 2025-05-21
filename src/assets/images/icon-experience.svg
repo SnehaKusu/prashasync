@@ -1,0 +1,15 @@
+<svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#6C63FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Window frame -->
+    <rect x="3" y="4" width="18" height="14" rx="2" />
+    
+    <!-- Top bar of the window -->
+    <path d="M3 8h18" />
+
+    <!-- Interactive symbol (like a sparkle or snowflake) -->
+    <path d="M12 11v2" />
+    <path d="M11 12h2" />
+    <path d="M10.5 10.5l3 3" />
+    <path d="M10.5 13.5l3 -3" />
+  </g>
+</svg>

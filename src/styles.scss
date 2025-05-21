@@ -17,3 +17,105 @@ html, body {
 body {
   line-height: 1.6;
 }
+/* Background Video Styles */
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+  opacity: 0.25; // Adjust to your preference
+  pointer-events: none;
+  filter: blur(1px) brightness(0.85); // Subtle touch
+}
+
+/* Overlay above video but below content */
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4); // Darkens background
+  z-index: -1;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  #background-video {
+    display: none;
+  }
+}
+/* ===============================
+   Global Media Styling
+   =============================== */
+
+/* All Images & Icons */
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Ensure inline SVGs scale well */
+svg {
+  width: 100%;
+  height: auto;
+}
+
+/* Responsive Videos */
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Section or block wrapping videos */
+section video,
+.section-video {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Ensure globe video background fits all screens */
+.globe-video {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/* Extra control on very small screens */
+@media (max-width: 600px) {
+  img,
+  svg,
+  video {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .globe-video {
+    max-height: 280px;
+  }
+
+  .dashboard-image-container,
+  .ml-image-wrapper,
+  .feature-card img {
+    margin: 0 auto;
+    display: block;
+  }
+
+  .feature-card img,
+  .value-prop img,
+  .agent-img {
+    max-width: 80%;
+  }
+}

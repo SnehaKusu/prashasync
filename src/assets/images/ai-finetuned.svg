@@ -1,0 +1,18 @@
+<svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g stroke="#6C63FF" stroke-width="1.5" fill="none" stroke-linejoin="round">
+    <!-- Row 1 -->
+    <rect x="8" y="8" width="12" height="12" />
+    <rect x="24" y="8" width="12" height="12" />
+    <rect x="40" y="8" width="12" height="12" />
+    
+    <!-- Row 2 -->
+    <rect x="8" y="24" width="12" height="12" />
+    <rect x="24" y="24" width="12" height="12" />
+    <rect x="40" y="24" width="12" height="12" />
+
+    <!-- Row 3 -->
+    <rect x="8" y="40" width="12" height="12" />
+    <rect x="24" y="40" width="12" height="12" />
+    <rect x="40" y="40" width="12" height="12" />
+  </g>
+</svg>
