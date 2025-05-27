@@ -119,3 +119,47 @@ section video,
     max-width: 80%;
   }
 }
+@media (min-width: 768px) {
+  .wellness-features,
+  .tech-grid,
+  .safety-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    justify-items: center; /* 💥 Centers each card inside grid */
+    text-align: center;
+  }
+
+  .feature-card,
+  .tech-card,
+  .safety-card {
+    align-items: center;
+    justify-content: flex-start; /* optional: top-align content */
+    text-align: center;
+  }
+
+  .feature-card img,
+  .tech-card img,
+  .safety-card img {
+    margin: 0 auto 1rem;
+    max-width: 80px;
+  }
+}
+/* Mobile-specific icon resizing */
+@media (max-width: 767px) {
+  .safety-card img,
+  .tech-card img,
+  .feature-card img {
+    width: 60px !important;
+    max-width: 60px !important;
+    height: auto;
+    margin: 0 auto 12px;
+  }
+
+  .safety-card,
+  .tech-card,
+  .feature-card {
+    padding: 1rem;
+    text-align: center;
+  }
+}
