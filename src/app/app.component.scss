@@ -1,4 +1,6 @@
-// Reset and Base Styles
+@use "sass:math";
+
+set and Base Styles
 body, html {
   margin: 0;
   padding: 0;
@@ -298,39 +300,27 @@ body, html {
   width: 100%;
   overflow: hidden;
   background: linear-gradient(to right, #0a0113, #16012c);
-  padding: 60px 0;
-  position: relative;
+  padding: 30px 0;
 
   .marquee-track {
-    display: inline-flex;
-    animation: scroll-left 15s linear infinite;
+    display: inline-block;
     white-space: nowrap;
-    gap: 60px;
+    animation: scroll-left 6s linear infinite;
 
-    // Repeat the two words multiple times using SCSS
     span {
-      font-size: 2.2rem;
-      font-weight: 600;
+      font-size: 2rem;
+      font-weight: 500;
       color: #f2eaff;
-      padding: 12px 36px;
-      margin-right: 40px;
-      border-radius: 30px;
-      background: rgba(180, 110, 255, 0.12);
-      border: 1px solid rgba(200, 130, 255, 0.3);
-      box-shadow: 0 0 14px rgba(180, 110, 255, 0.25);
-      backdrop-filter: blur(6px);
-    }
-
-    // Fake repetition for smoothness
-    &::after {
-      content: 'Anytime Anywhere Anytime Anywhere Anytime Anywhere';
-      font-size: 2.2rem;
-      font-weight: 600;
-      color: transparent;
-      margin-left: 40px;
+      margin-right: 80px;
     }
   }
 }
+
+@keyframes scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 
 @keyframes scroll-left {
   0% { transform: translateX(0%); }
@@ -1634,15 +1624,15 @@ html {
       // Random sparkle generation
       @for $i from 1 through 30 {
         &:nth-child(#{$i}) {
-          $size: random(3) + 2 + px;
+          $size: math.random(3) + 2 + px;
           width: $size;
           height: $size;
 
           animation: 
-            twinkle (3s + random(7)) infinite (random(5) + s),
-            drift (30s + random(30)) linear infinite;
-          box-shadow: 0 0 (random(10) + 5 + px) (random(3) + 2 + px) white;
-          filter: blur(random(1) + px);
+            twinkle (3s + math.random(7)) infinite (random(5) + s),
+            drift (30s + math.random(30)) linear infinite;
+          box-shadow: 0 0 (math.random(10) + 5 + px) (random(3) + 2 + px) white;
+          filter: blur(math.random(1) + px);
         }
       }
     }
@@ -1715,7 +1705,7 @@ html {
 
 @keyframes drift {
   0% { transform: translate(0, 0); }
-  100% { transform: translate(random(100) - 50 + px, random(100) - 50 + px); }
+  100% { transform: translate(math.random(100) - 50 + px, random(100) - 50 + px); }
 }
 
 @keyframes pulse {
@@ -1729,7 +1719,7 @@ html {
     .sparkles .sparkle {
       @for $i from 1 through 20 { // Fewer sparkles on mobile
         &:nth-child(#{$i}) {
-          animation-duration: (2s + random(5)) (random(3) + s);
+          animation-duration: (2s + math.random(5)) (math.random(3) + s);
         }
       }
     }
@@ -1822,6 +1812,8 @@ html {
     
     .safety-grid {
       // Maintain desktop grid but allow wrapping
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -1862,4 +1854,278 @@ html {
       }
     }
   }
+}
+.hero-full {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to bottom, #2c0069, #0e0a1f);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  color: white;
+}
+
+.hero-visual-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at bottom, #a74cff55 0%, transparent 60%);
+  filter: blur(60px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-content {
+  z-index: 1;
+  max-width: 800px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.hero-cta {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: #7c4dff;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #a74cff;
+    box-shadow: 0 0 20px #a74cff88;
+  }
+}
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: black;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+}
+
+.sparkle-bg {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: radial-gradient(white 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.15;
+  animation: sparkleMove 60s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+@keyframes sparkleMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+.hero-content {
+  z-index: 1;
+  max-width: 800px;
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.85;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: #7c4dff;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #a74cff;
+      box-shadow: 0 0 20px #a74cff88;
+    }
+  }
+}
+.hero-container {
+  position: relative;
+  height: 100vh;
+  background: #0b0116;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+}
+
+.sparkle-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sparkle-overlay::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 2px
+    );
+  background-size: 1px 20px;
+  animation: sparkleFall 12s linear infinite;
+  opacity: 0.12;
+  filter: blur(0.3px);
+}
+
+@keyframes sparkleFall {
+  0% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(50px);
+  }
+}
+.hero-container {
+  position: relative;
+  overflow: hidden;
+  height: 100vh; // or your preferred height
+}
+
+.hero-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.sparkle-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  // optional overlay styling here (e.g., gradient, dark tint, etc.)
+}
+.wellness-features {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 2rem !important;
+  padding: 2rem 0;
+}
+
+.feature-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .wellness-features {
+    grid-template-columns: 1fr !important;
+  }
+}
+.feature-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  align-items: start;
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: transparent; // or add a subtle card background if needed
+  padding: 1rem 0;
+  height: 100%;
+  text-align: left;
+}
+
+.feature h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.feature p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.feature ng-lottie {
+  width: 100%;
+  max-width: 320px;   // Make it big but constrained
+  height: auto;
+  margin-top: 1.5rem;
+  align-self: center;
+}
+.lottie-wrapper {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  line-height: 0;
+  display: flex;
+  justify-content: center;
 }

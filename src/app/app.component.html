@@ -19,34 +19,22 @@
   <!-- Desktop-only CTA -->
   <a href="#book-call" class="cta-button desktop-only" (click)="closeMenu()">Book a Call</a>
 </nav>
-
-
-
-
-
 <!--  Section 1 -->
-<div class="hero-wrapper">
-  <section class="hero-section">
-    <div class="hero-glow-bg">
-      <div class="hero-stars"></div>
-      <div class="hero-arch"></div>
-    </div>
+<div class="hero-container">
+  <!-- 🌄 Video background -->
+  <video autoplay muted loop playsinline class="hero-bg-video">
+    <source src="assets/videos/hero-bg.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
 
-    <div class="hero-content">
-      <h1>Your Personalized Mental Healthcare Companion</h1>
-      <p>Revolutionizing Mental Health Support with AI-driven therapy and connection</p>
-      <a href="#book-call" class="hero-cta">Book a Free Call</a>
-    </div>
-  </section>
+  <div class="sparkle-overlay"></div>
+
+  <div class="hero-content">
+    <h1>Your Personalized Mental Healthcare Companion</h1>
+    <p>Revolutionizing Mental Health Support with AI-driven therapy and connection</p>
+    <a href="#book-call" class="hero-cta">Book a Free Call</a>
+  </div>
 </div>
-
-
-
-
-
-
- 
-
 <!--  Section 2 -->
 <section class="dashboard-preview">
   <h2>Experience Our Smart Dashboard</h2>
@@ -55,38 +43,45 @@
   </p>
 
   <div class="dashboard-image-container">
-    <img src="assets/images/dashboard-preview.png" alt="Dashboard Preview" />
+    <img src="assets/images/dashboard-preview.png"   width="600" 
+  height="400" 
+  alt="Dashboard Preview" 
+  loading="lazy" />
   </div>
 
   <button class="demo-cta">Try Live Demo</button>
 </section>
 
-<!--  Section 3 -->
-<section class="marquee-anytime">
-  <div class="marquee-track">
+<!-- ✅ Combined Section: Marquee + Value Prop -->
+<section>
+  <!-- 🌐 Marquee Section (Unchanged) -->
+  <div class="marquee-anytime">
+   <div class="marquee-track">
+    <span>Anytime</span>
+    <span>Anywhere</span>
+    <span>Anytime</span>
+    <span>Anywhere</span>
     <span>Anytime</span>
     <span>Anywhere</span>
   </div>
-</section>
-<!--  Section 4 -->
-<section class="value-prop">
-  <div class="value-content">
-    <p>
-      <strong>PraSha Sync transforms <span class="highlight">mental healthcare</span></strong> with
-      <br />
-      AI-driven therapy, personalized treatment plans, and real-time tracking—
-      making support accessible and engaging.
-    </p>
+  </div>
+
+  <!-- 💬 Value Proposition Section (Unchanged) -->
+  <div class="value-prop">
+    <div class="value-content">
+      <p>
+        <strong>PraSha Sync transforms <span class="highlight">mental healthcare</span></strong> with
+        <br />
+        AI-driven therapy, personalized treatment plans, and real-time tracking—making support accessible and engaging.
+      </p>
+    </div>
   </div>
 </section>
+
 
 <!--  Section 5 -->
 <section id="features">
 <section class="features-models">
-  <p class="section-intro">
-    To bridge the gap between individuals and mental health support by providing seamless, AI, data-driven, and personalized care.
-  </p>
-
   <div class="features-header">
     <p class="subtitle">FEATURES & MODELS</p>
     <h2>Your Personalized Path to Mental Clarity</h2>
@@ -97,15 +92,20 @@
     <div class="feature">
       <h3>AI Therapy Co-Pilot</h3>
       <p>Bridges the gap between sessions with consistent, strategy-based support—so you're never without guidance on your journey.</p>
-      <img src="assets/images/ai-network.png" alt="AI Network Graphic" />
+          <ng-lottie 
+      [options]="aiTherapyOptions" 
+      style="width: 300px; height: 300px;">
+    </ng-lottie>
     </div>
     
     <div class="feature">
       <h3>Hybrid AI Human model</h3>
       <p>Stay protected with anonymous therapy—express yourself freely.</p>
       <br>
-      <img src="assets/images/ai-icon.png" alt="AI Icon Block" />
-    </div>
+ <ng-lottie 
+      [options]="hybridOptions" 
+      style="width: 300px; height: 300px;">
+    </ng-lottie>    </div>
   </div>
 </section>
 </section>
@@ -114,23 +114,17 @@
 <section class="ai-multilingual">
   <div class="ml-header">
     <h3>Multilingual AI Agent</h3>
-    <p>Feel understood in your native language. Our multilingual AI communicates in the language you're most comfortable with.</p>
+    <p>
+      Feel understood in your native language. Our multilingual AI communicates in the language you're most comfortable with.
+    </p>
   </div>
 
-  <div class="ml-image-wrapper video-wrapper">
-  <video
-  #videoElement
-  muted
-  loop
-  playsinline
-  preload="auto"
-  class="agent-video">
-  <source src="assets/videos/ai-video.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-
+  <div class="ml-image-wrapper lottie-wrapper">
+    <ng-lottie [options]="multilingualOptions" style="width: 100%; max-width: 800px; height: auto;"></ng-lottie>
   </div>
 </section>
+
+
 
 <!--  Section 6 -->
 <section class="wellness-engagement-grid">
@@ -141,30 +135,31 @@
 
   <div class="wellness-features">
     <div class="feature-card">
-      <img src="assets/images/ai-bubble.png" alt="AI Bubble" />
+      <ng-lottie [options]="gamifiedOptions" style="width: 250px; height: 250px;"></ng-lottie>
       <h3>Gamified Therapy Experience</h3>
       <p>Age-based interactive design keeps therapy engaging and consistent.</p>
     </div>
 
     <div class="feature-card">
-      <img src="assets/images/anonymous-icon.png" alt="Anonymous Mode" />
+      <ng-lottie [options]="anonymousOptions" style="width: 250px; height: 250px;"></ng-lottie>
       <h3>Anonymous Mode</h3>
       <p>Stay safe and express freely with anonymous therapy sessions.</p>
     </div>
 
     <div class="feature-card">
-      <img src="assets/images/support-icon.png" alt="24/7 AI Support" />
+      <ng-lottie [options]="support247Options" style="width: 250px; height: 250px;"></ng-lottie>
       <h3>AI 24/7 Service</h3>
       <p>Monitor improvements with smart insights.</p>
     </div>
 
     <div class="feature-card">
-      <img src="assets/images/recommend-icon.png" alt="AI Recommendations" />
+      <ng-lottie [options]="recommendationOptions" style="width: 250px; height: 250px;"></ng-lottie>
       <h3>Recommendation</h3>
       <p>Monitor improvements with smart insights.</p>
     </div>
   </div>
 </section>
+
 <!--  Section 7 -->
 <section class="arvr-experience">
   <div class="arvr-content">
@@ -173,15 +168,11 @@
       Our AR/VR features are designed to make mental health support more interactive,
       immersive, and effective.
     </p>
-  <video
-  #videoElement
-  muted
-  loop
-  playsinline
-  preload="auto"
-  class="your-video-class">
-  <source src="assets/videos/360.mp4" type="video/mp4" />
-</video>
+  <ng-lottie 
+  [options]="arvrOptions" 
+ style="width: 100%; max-width: 800px; height: auto;">
+</ng-lottie>
+
 
   </div>
 </section>
@@ -323,7 +314,6 @@
 </section>
 </section>
 <!--  Section 11 -->
-<section id="tech">
 <section class="prasha-tech">
   <div class="tech-header">
     <p class="tech-label">PRASHA TECH</p>
@@ -336,32 +326,34 @@
 
   <div class="tech-grid">
     <div class="tech-card">
-      <img src="assets/images/ai-foundation.svg" alt="Foundation Model" />
+      <img src="assets/images/ai-foundation.svg" />
       <h4>Foundation Model</h4>
     </div>
     <div class="tech-card">
-      <img src="assets/images/ai-finetuned.svg" alt="Fine-tuned Model" />
+      <img src="assets/images/ai-finetuned.svg" />
       <h4>Fine-tuned Model</h4>
     </div>
     <div class="tech-card">
-      <img src="assets/images/ai-augmented.svg" alt="Augmented Model" />
+      <img src="assets/images/ai-augmented.svg" />
       <h4>Augmented Model</h4>
     </div>
     <div class="tech-card">
-      <img src="assets/images/ai-smartapps.svg" alt="Smart Applications" />
+      <img src="assets/images/ai-smartapps.svg" />
       <h4>Smart Applications</h4>
     </div>
     <div class="tech-card">
-      <img src="assets/images/ai-secure.svg" alt="Secure Communication" />
+      <img src="assets/images/ai-secure.svg" />
       <h4>Secure Communication</h4>
     </div>
     <div class="tech-card">
-      <img src="assets/images/ai-companion.svg" alt="Mental Health Companion" />
+      <img src="assets/images/ai-companion.svg" />
       <h4>Mental Health Companion</h4>
     </div>
   </div>
 </section>
-</section>
+
+
+
 <!--  Section 12 -->
 <section class="book-call">
   <div class="book-left">
@@ -394,22 +386,51 @@
 
     </div>
 
-    <!-- Right side form -->
-    <form class="contact-form">
-      <label>Name</label>
-      <input type="text" placeholder="Jane Smith" />
+<!-- Right side form -->
+<form #formRef="ngForm" #formElement (ngSubmit)="sendEmail()" class="contact-form">
+  <label for="user_name">Name</label>
+  <input
+    type="text"
+    id="user_name"
+    name="user_name"
+    ngModel
+    placeholder="Jane Smith"
+    required
+  />
 
-      <label>Email</label>
-      <input type="email" placeholder="your@email.com" />
+  <label for="user_email">Email</label>
+  <input
+    type="email"
+    id="user_email"
+    name="user_email"
+    ngModel
+    placeholder="your@email.com"
+    required
+  />
 
-      <label>Phone number</label>
-      <input type="tel" placeholder="+1 98765 43210" />
+  <label for="user_phone">Phone number</label>
+  <input
+    type="tel"
+    id="user_phone"
+    name="user_phone"
+    ngModel
+    placeholder="+1 98765 43210"
+  />
 
-      <label>How can we help? (Optional)</label>
-      <textarea placeholder="Tell us what you need..."></textarea>
+  <label for="message">Message</label>
+  <textarea
+    id="message"
+    name="message"
+    ngModel
+    placeholder="Tell us what you need..."
+  ></textarea>
 
-      <button type="submit">Submit</button>
-    </form>
+  <button type="submit">Send</button>
+</form>
+
+
+
+
   </div>
 </section>
 </section>
@@ -450,5 +471,9 @@
     <p>&copy; 2025 Prasha Sync. All rights reserved.</p>
   </div>
 </footer>
+ <script src="https://unpkg.com/lottie-web@5.12.0/build/player/lottie.min.js"></script>
+
+
+
 
 
