@@ -11,16 +11,21 @@ import { LottieComponent } from 'ngx-lottie';
 import type { AnimationOptions } from 'ngx-lottie';
 import emailjs from '@emailjs/browser';
 import { FormsModule } from '@angular/forms';
+import type { AnimationItem } from 'lottie-web';
+import player from 'lottie-web';
 
-
+export function playerFactory() {
+  return player;
+}
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-   
-    LottieComponent,FormsModule
-  ],
+ imports: [
+  LottieComponent,
+  FormsModule
+],
+
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
@@ -28,6 +33,8 @@ import { FormsModule } from '@angular/forms';
 export class AppComponent implements AfterViewInit {
   title = 'prashasync-landing';
   isMenuOpen = false;
+  animationItems: { [key: string]: any } = {};
+
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
@@ -40,12 +47,15 @@ export class AppComponent implements AfterViewInit {
   // ✅ For autoplaying all <video #videoElement> tags
   @ViewChildren('videoElement') videoRefs!: QueryList<ElementRef<HTMLVideoElement>>;
 @ViewChild('formElement') formElementRef!: ElementRef<HTMLFormElement>;
+@ViewChild('multilingualLottie', { static: false }) multilingualLottieRef!: LottieComponent;
+
   // ✅ Lottie animation config
 multilingualOptions: AnimationOptions = {
   path: 'assets/animations/MULTILUNGUAL03.json',
   renderer: 'svg' as const,  // 🔥 critical fix
   loop: true,
-  autoplay: true
+  autoplay: false,
+
 };
 aiTherapyOptions: AnimationOptions = {
   path: 'assets/animations/AI-THERAPY01.json',
@@ -152,6 +162,20 @@ sendEmail(): void {
     alert('Form element not found.');
   }
 }
+
+
+handleAnimationCreated(key: string, animation: any): void {
+  this.animationItems[key] = animation;
+}
+
+playAnimation(key: string): void {
+  this.animationItems[key]?.play();
+}
+
+stopAnimation(key: string): void {
+  this.animationItems[key]?.stop();
+}
+
 
 
 }

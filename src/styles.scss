@@ -205,7 +205,13 @@ ng-lottie {
     min-height: 400px;
   }
 }
-.ml-image-wrapper {
-  max-width: 400px;
-}
 
+
+html {
+  scroll-behavior: smooth;
+}
+///////////////////////NEW STYLESSS//////////////////////
+html, body {
+  height: auto !important;
+  overflow-x: hidden;
+}

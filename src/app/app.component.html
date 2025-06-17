@@ -1,60 +1,66 @@
 <!-- Navigation -->
 <nav class="navbar">
-  <!-- Mobile Hamburger (left only on small screens) -->
-  <button class="hamburger" (click)="toggleMenu()">
-    {{ isMenuOpen ? '✖' : '☰' }}
-  </button>
-
-  <!-- Centered Logo -->
-  <div class="logo">Prasha<span class="sync">Sync</span></div>
-
-  <!-- Desktop Nav Links -->
-  <ul class="nav-links" [class.open]="isMenuOpen">
-    <li><a href="#features" (click)="closeMenu()">Features</a></li>
-    <li><a href="#how-it-works" (click)="closeMenu()">How it works</a></li>
-    <li><a href="#safety" (click)="closeMenu()">Safety</a></li>
-    <li><a href="#tech" (click)="closeMenu()">Tech</a></li>
-  </ul>
-
-  <!-- Desktop-only CTA -->
-  <a href="#book-call" class="cta-button desktop-only" (click)="closeMenu()">Book a Call</a>
+  <div class="navbar-left">
+    <div class="logo">
+      <img src="assets/images/logo .jpg" alt="PraShaSync Logo" class="navbar-logo" />
+      <span class="logo-text">PraSha<span class="sync">Sync</span></span>
+    </div>
+  </div>
+  <!-- Right: Nav Links + CTA -->
+  <div class="navbar-right">
+    <!-- Hamburger (mobile only) -->
+    <button class="hamburger" (click)="toggleMenu()">
+      {{ isMenuOpen ? '✖' : '☰' }}
+    </button>
+    <!-- Nav Links -->
+    <ul class="nav-links" [class.open]="isMenuOpen">
+      <li><a href="#features" (click)="closeMenu()">Features</a></li>
+      <li><a href="#how-it-works" (click)="closeMenu()">How it works</a></li>
+      <li><a href="#safety" (click)="closeMenu()">Safety</a></li>
+      <li><a href="#tech" (click)="closeMenu()">Tech</a></li>
+    </ul>
+    <!-- CTA Button -->
+    <a href="#book-call" class="cta-button desktop-only" (click)="closeMenu()">Book a Call</a>
+  </div>
 </nav>
-<!--  Section 1 -->
-<div class="hero-container">
-  <!-- 🌄 Video background -->
-  <video autoplay muted loop playsinline class="hero-bg-video">
-    <source src="assets/videos/hero-bg.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
+<!-- Section 1: Hero+Dashboard -->
+<div class="hero-dashboard-wrapper">
+  <!-- 🎥 Hero Section -->
+  <section class="hero-container">
+    <video autoplay muted loop playsinline class="hero-bg-video">
+      <source src="assets/videos/hero-bg.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
 
-  <div class="sparkle-overlay"></div>
+    <div class="sparkle-overlay"></div>
 
-  <div class="hero-content">
-    <h1>Your Personalized Mental Healthcare Companion</h1>
-    <p>Revolutionizing Mental Health Support with AI-driven therapy and connection</p>
-    <a href="#book-call" class="hero-cta">Book a Free Call</a>
-  </div>
+    <div class="hero-content">
+      <h1>Your Personalized Mental Healthcare Companion</h1>
+      <p>Revolutionizing Mental Health Support with AI-driven therapy and connection</p>
+      <a href="#book-call" class="hero-cta">Book a Free Call</a>
+    </div>
+  </section>
+
+  <!-- 💻 Floating Dashboard Preview -->
+  <section class="dashboard-preview">
+    <h2>Experience Our Smart Dashboard</h2>
+    <p class="dashboard-subtext">
+      Monitor appointments, patient trends, analytics, and feedback — all in one place.
+    </p>
+    <div class="dashboard-image-container">
+      <img
+        src="assets/images/dashboard-preview.png"
+        width="800"
+        height="500"
+        alt="Dashboard Preview"
+        loading="lazy"
+      />
+    
+      
+    </div>
+  </section>
 </div>
-<!--  Section 2 -->
-<section class="dashboard-preview">
-  <h2>Experience Our Smart Dashboard</h2>
-  <p class="dashboard-subtext">
-    Monitor appointments, patient trends, analytics, and feedback — all in one place.
-  </p>
-
-  <div class="dashboard-image-container">
-    <img src="assets/images/dashboard-preview.png"   width="600" 
-  height="400" 
-  alt="Dashboard Preview" 
-  loading="lazy" />
-  </div>
-
-  <button class="demo-cta">Try Live Demo</button>
-</section>
-
-<!-- ✅ Combined Section: Marquee + Value Prop -->
-<section>
-  <!-- 🌐 Marquee Section (Unchanged) -->
+<!-- Section2: Marquee + Value Prop + NVIDIA -->
   <div class="marquee-anytime">
    <div class="marquee-track">
     <span>Anytime</span>
@@ -65,8 +71,19 @@
     <span>Anywhere</span>
   </div>
   </div>
+<!--Section 3:Trusted by NVIDIA Section -->
+<section class="nvidia-trust">
+  <h2>Trusted by NVIDIA for AI Innovation</h2>
 
-  <!-- 💬 Value Proposition Section (Unchanged) -->
+  <div class="nvidia-content">
+    <img src="assets/images/nvidia-inception-logo.avif.png" alt="NVIDIA Inception Program Logo" />
+    <p>
+      PraSha Sync has been backed by NVIDIA Inception Program, an exclusive global initiative
+      that backs exceptional AI startups poised to reshape industries.
+    </p>
+  </div>
+</section>
+<!--Section 4 Value Proposition Section (Unchanged) -->
   <div class="value-prop">
     <div class="value-content">
       <p>
@@ -76,9 +93,6 @@
       </p>
     </div>
   </div>
-</section>
-
-
 <!--  Section 5 -->
 <section id="features">
 <section class="features-models">
@@ -89,28 +103,35 @@
   </div>
 
   <div class="feature-cards">
-    <div class="feature">
-      <h3>AI Therapy Co-Pilot</h3>
-      <p>Bridges the gap between sessions with consistent, strategy-based support—so you're never without guidance on your journey.</p>
-          <ng-lottie 
-      [options]="aiTherapyOptions" 
-      style="width: 300px; height: 300px;">
-    </ng-lottie>
-    </div>
-    
-    <div class="feature">
-      <h3>Hybrid AI Human model</h3>
-      <p>Stay protected with anonymous therapy—express yourself freely.</p>
-      <br>
- <ng-lottie 
-      [options]="hybridOptions" 
-      style="width: 300px; height: 300px;">
-    </ng-lottie>    </div>
+<div class="feature"
+     (mouseenter)="playAnimation('aiTherapy')"
+     (mouseleave)="stopAnimation('aiTherapy')">
+  <h3>AI Therapy Co-Pilot</h3>
+  <p>Bridges the gap between sessions with consistent, strategy-based support—so you're never without guidance on your journey.</p>
+  <ng-lottie
+    [options]="aiTherapyOptions"
+    (animationCreated)="handleAnimationCreated('aiTherapy', $event)"
+    style="width: 300px; height: 300px;">
+  </ng-lottie>
+</div>
+
+<div class="feature"
+     (mouseenter)="playAnimation('hybridModel')"
+     (mouseleave)="stopAnimation('hybridModel')">
+  <h3>Hybrid AI Human model</h3>
+  <p>Stay protected with anonymous therapy—express yourself freely.</p>
+  <br>
+  <ng-lottie
+    [options]="hybridOptions"
+    (animationCreated)="handleAnimationCreated('hybridModel', $event)"
+    style="width: 300px; height: 300px;">
+  </ng-lottie>
+</div>
+
   </div>
 </section>
 </section>
-
-<!--  Section 5 -->
+<!--  Section 6 -->
 <section class="ai-multilingual">
   <div class="ml-header">
     <h3>Multilingual AI Agent</h3>
@@ -119,64 +140,91 @@
     </p>
   </div>
 
-  <div class="ml-image-wrapper lottie-wrapper">
-    <ng-lottie [options]="multilingualOptions" style="width: 100%; max-width: 800px; height: auto;"></ng-lottie>
-  </div>
+<div
+  class="landscape-lottie-wrapper"
+  (mouseenter)="playAnimation('multilingual')"
+  (mouseleave)="stopAnimation('multilingual')"
+>
+  <ng-lottie
+    [options]="multilingualOptions"
+    (animationCreated)="handleAnimationCreated('multilingual', $event)">
+  </ng-lottie>
+</div>
+
 </section>
-
-
-
-<!--  Section 6 -->
+<!--  Section 7 -->
 <section class="wellness-engagement-grid">
   <div class="wellness-grid-header">
     <h2>Wellness & Engagement</h2>
     <p>Making Mental Healthcare Easy, Fun, and Always Available</p>
   </div>
-
   <div class="wellness-features">
-    <div class="feature-card">
-      <ng-lottie [options]="gamifiedOptions" style="width: 250px; height: 250px;"></ng-lottie>
-      <h3>Gamified Therapy Experience</h3>
-      <p>Age-based interactive design keeps therapy engaging and consistent.</p>
-    </div>
+<div class="feature-clean"
+     (mouseenter)="playAnimation('gamified')"
+     (mouseleave)="stopAnimation('gamified')">
+  <ng-lottie
+    [options]="gamifiedOptions"
+    (animationCreated)="handleAnimationCreated('gamified', $event)">
+  </ng-lottie>
+  <h3>Gamified Therapy Experience</h3>
+  <p>Age-based interactive design keeps therapy engaging and consistent.</p>
+</div>
 
-    <div class="feature-card">
-      <ng-lottie [options]="anonymousOptions" style="width: 250px; height: 250px;"></ng-lottie>
-      <h3>Anonymous Mode</h3>
-      <p>Stay safe and express freely with anonymous therapy sessions.</p>
-    </div>
 
-    <div class="feature-card">
-      <ng-lottie [options]="support247Options" style="width: 250px; height: 250px;"></ng-lottie>
-      <h3>AI 24/7 Service</h3>
-      <p>Monitor improvements with smart insights.</p>
-    </div>
+<div class="feature-clean"
+     (mouseenter)="playAnimation('anonymous')"
+     (mouseleave)="stopAnimation('anonymous')">
+  <ng-lottie
+    [options]="anonymousOptions"
+    (animationCreated)="handleAnimationCreated('anonymous', $event)">
+  </ng-lottie>
+  <h3>Anonymous Mode</h3>
+  <p>Stay safe and express freely with anonymous therapy sessions.</p>
+</div>
 
-    <div class="feature-card">
-      <ng-lottie [options]="recommendationOptions" style="width: 250px; height: 250px;"></ng-lottie>
-      <h3>Recommendation</h3>
-      <p>Monitor improvements with smart insights.</p>
-    </div>
-  </div>
-</section>
+<div class="feature-clean"
+     (mouseenter)="playAnimation('support247')"
+     (mouseleave)="stopAnimation('support247')">
+  <ng-lottie
+    [options]="support247Options"
+    (animationCreated)="handleAnimationCreated('support247', $event)">
+  </ng-lottie>
+  <h3>AI 24/7 Service</h3>
+  <p>Monitor improvements with smart insights.</p>
+</div>
 
-<!--  Section 7 -->
-<section class="arvr-experience">
-  <div class="arvr-content">
-    <h3>Immersive AR/VR Therapy Experiences</h3>
-    <p>
-      Our AR/VR features are designed to make mental health support more interactive,
-      immersive, and effective.
-    </p>
-  <ng-lottie 
-  [options]="arvrOptions" 
- style="width: 100%; max-width: 800px; height: auto;">
-</ng-lottie>
-
+<div class="feature-clean"
+     (mouseenter)="playAnimation('recommendation')"
+     (mouseleave)="stopAnimation('recommendation')">
+  <ng-lottie
+    [options]="recommendationOptions"
+    (animationCreated)="handleAnimationCreated('recommendation', $event)">
+  </ng-lottie>
+  <h3>Recommendation</h3>
+  <p>Smart suggestions tailored to your mental health journey.</p>
+</div>
 
   </div>
 </section>
 <!--  Section 8 -->
+<section class="arvr-experience">
+ <div class="arvr-content"
+     (mouseenter)="playAnimation('arvr')"
+     (mouseleave)="stopAnimation('arvr')">
+  <h3>Immersive AR/VR Therapy Experiences</h3>
+  <p>
+    Our AR/VR features are designed to make mental health support more interactive,
+    immersive, and effective.
+  </p>
+  <ng-lottie 
+    [options]="arvrOptions" 
+    (animationCreated)="handleAnimationCreated('arvr', $event)"
+    style="width: 100%; max-width: 800px; height: auto;">
+  </ng-lottie>
+</div>
+
+</section>
+<!--  Section 9 -->
 <section class="mental-health-delay">
   <div class="delay-wrapper">
     <div class="delay-left">
@@ -196,7 +244,7 @@
     </div>
   </div>
 </section>
-<!--  Section 9 -->
+<!--  Section 10 -->
 <section id="how-it-works">
 <section class="how-it-works">
   <div class="how-wrapper">
@@ -232,7 +280,7 @@
   </div>
 </section>
 </section>
-<!--  Section 10 -->
+<!--  Section 11 -->
 <section id="safety">
 <section class="ai-safety-research">
   <div class="safety-top">
@@ -313,8 +361,9 @@
   </div>
 </section>
 </section>
-<!--  Section 11 -->
-<section class="prasha-tech">
+<!--  Section 12 -->
+<section id="tech" class="prasha-tech">
+
   <div class="tech-header">
     <p class="tech-label">PRASHA TECH</p>
     <h2>Smart, secure AI built for better<br />mental health outcomes.</h2>
@@ -346,15 +395,12 @@
       <h4>Secure Communication</h4>
     </div>
     <div class="tech-card">
-      <img src="assets/images/ai-companion.svg" />
+      <img src="assets/images/logo .jpg" />
       <h4>Mental Health Companion</h4>
     </div>
   </div>
 </section>
-
-
-
-<!--  Section 12 -->
+<!--  Section 13 -->
 <section class="book-call">
   <div class="book-left">
     <h3>If you’ve made it this far, take a moment to breathe.</h3>
@@ -370,7 +416,7 @@
   </div>
 
 </section>
-<!--  Section 13 -->
+<!--  Section 14 -->
 <section id="book-call">
 <section class="contact-section" id="contact">
   <div class="contact-wrapper">
@@ -434,7 +480,7 @@
   </div>
 </section>
 </section>
-<!--  Section 14 -->
+<!--  Section 15 -->
 <section class="global-reach">
   <h2>We are worldwide</h2>
 
@@ -445,7 +491,7 @@
 
 
 </section>
-<!--  Section 15 -->
+<!--  Section 16 -->
 <footer class="site-footer">
   <div class="footer-content">
     <!-- Left -->
