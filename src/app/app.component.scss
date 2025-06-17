@@ -1637,9 +1637,9 @@ html {
           height: $size;
 
           animation: 
-            twinkle (3s + math.random(7)) infinite (random(5) + s),
+           twinkle (3s + math.random(7)) infinite (math.random(5) + s)
             drift (30s + math.random(30)) linear infinite;
-          box-shadow: 0 0 (math.random(10) + 5 + px) (random(3) + 2 + px) white;
+          box-shadow: 0 0 (math.random(10) + 5 + px) (math.random(3) + 2 + px) white;
           filter: blur(math.random(1) + px);
         }
       }
