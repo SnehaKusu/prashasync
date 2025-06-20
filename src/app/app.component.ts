@@ -163,17 +163,33 @@ sendEmail(): void {
       () => {
         alert('Message sent via Email!');
 
-        // Then: Submit to Google Sheets
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwvX5GAFoQLj-KLmJDEevkJUXgVct1pFyGEqzw88meRciaL4-Jgflm3IxXiOsaTPd8/exec'; 
-        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-          .then(() => console.log('Submitted to Google Sheets'))
-          .catch((error) => console.error('Google Sheets Error:', error));
-      },
-      (error) => {
-        console.error('EmailJS error:', error);
-        alert('Failed to send message. Try again later.');
-      }
-    );
+        const sheetdbURL = 'https://sheetdb.io/api/v1/ad24whchbvl07';
+      const formData = new FormData(form);
+      const data = {
+        data: {
+          name: formData.get('user_name'),
+          email: formData.get('user_email'),
+          phone: formData.get('user_phone'),
+          message: formData.get('message'),
+        }
+      };
+
+      fetch(sheetdbURL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }).then(() => {
+        console.log('Stored in Google Sheets via SheetDB');
+      }).catch((error) => {
+        console.error('SheetDB Error:', error);
+      });
+
+    }, (error) => {
+      console.error('EmailJS error:', error);
+      alert('Failed to send message. Try again later.');
+    });
   } else {
     alert('Form element not found.');
   }

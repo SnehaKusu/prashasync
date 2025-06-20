@@ -3225,3 +3225,25 @@ div + section {
   margin-top: 0;
   padding-top: 0;
 }
+.global-reach {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .globe-video {
+    width: 420px;        // adjust size
+    height: 420px;       // adjust size
+    object-fit: cover;
+    border-radius: 50%;  // 👈 makes it round
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); // optional soft glow
+  }
+}
+
