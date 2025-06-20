@@ -3186,3 +3186,42 @@ section + section {
 section + section {
   margin-top: 0; // kill any global spacing
 }
+.breathe-bubble {
+  background-color: rgba(166, 120, 255, 0.12);
+  border: 2px solid #a678ff;
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 1.5rem 2rem;
+  border-radius: 50%;
+  text-align: center;
+  animation: breatheScale 4s ease-in-out infinite;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem auto;
+}
+
+@keyframes breatheScale {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+}
+section {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+section + section,
+section + div,
+div + section {
+  margin-top: 0;
+  padding-top: 0;
+}

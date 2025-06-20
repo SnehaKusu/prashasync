@@ -13,6 +13,7 @@ import emailjs from '@emailjs/browser';
 import { FormsModule } from '@angular/forms';
 import type { AnimationItem } from 'lottie-web';
 import player from 'lottie-web';
+import { RouterModule } from '@angular/router';
 
 export function playerFactory() {
   return player;
@@ -21,7 +22,7 @@ export function playerFactory() {
 @Component({
   selector: 'app-root',
   standalone: true,
- imports: [
+ imports: [RouterModule,
   LottieComponent,
   FormsModule
 ],
@@ -63,7 +64,6 @@ aiTherapyOptions: AnimationOptions = {
   loop: true,
   autoplay: true
 };
-
 hybridOptions: AnimationOptions = {
   path: 'assets/animations/HYBRID02.json',
   renderer: 'svg' as const,
@@ -76,14 +76,12 @@ gamifiedOptions: AnimationOptions = {
   loop: true,
   autoplay: true
 };
-
 anonymousOptions: AnimationOptions = {
   path: 'assets/animations/ANONYMOUS05.json',
   renderer: 'svg' as const,
   loop: true,
   autoplay: true
 };
-
 support247Options: AnimationOptions = {
   path: 'assets/animations/247 07.json',
   renderer: 'svg' as const,
@@ -107,6 +105,15 @@ recommendationOptions = {
 
 
   ngAfterViewInit() {
+
+    const bubble = document.getElementById('breatheBubble');
+  if (bubble) {
+    let isInhale = true;
+    setInterval(() => {
+      bubble.textContent = isInhale ? 'Exhale' : 'Inhale';
+      isInhale = !isInhale;
+    }, 4000); // Match the 4s keyframe animation
+  }
     // 🔹 Section fade-in on scroll
     const observer = new IntersectionObserver(
       (entries) => {
@@ -146,13 +153,22 @@ sendEmail(): void {
   const form = this.formElementRef?.nativeElement;
 
   if (form) {
+    // First: Send via EmailJS
     emailjs.sendForm(
-      'service_3ss8axj',
-      'template_48wyjzc',
+      'service_o3tp2by',
+      'template_tgv2b4y',
       form,
-      'gqvRMFXczcBFMQNUx'
+      '7-Jbcszrv5roVsRpG'
     ).then(
-      () => alert('Message sent successfully!'),
+      () => {
+        alert('Message sent via Email!');
+
+        // Then: Submit to Google Sheets
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwvX5GAFoQLj-KLmJDEevkJUXgVct1pFyGEqzw88meRciaL4-Jgflm3IxXiOsaTPd8/exec'; 
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+          .then(() => console.log('Submitted to Google Sheets'))
+          .catch((error) => console.error('Google Sheets Error:', error));
+      },
       (error) => {
         console.error('EmailJS error:', error);
         alert('Failed to send message. Try again later.');
@@ -162,6 +178,8 @@ sendEmail(): void {
     alert('Form element not found.');
   }
 }
+
+
 
 
 handleAnimationCreated(key: string, animation: any): void {

@@ -215,3 +215,10 @@ html, body {
   height: auto !important;
   overflow-x: hidden;
 }
+section {
+  margin: 0;
+  padding: 0;
+}
+section + section {
+  margin-top: 0;
+}
